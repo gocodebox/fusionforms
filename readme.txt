@@ -4,7 +4,7 @@ Tags: Infusionsoft
 Requires at least: 4.0
 Tested up to: 4.1
 License: License: GPLv2 or later
-License URI: License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 This plugin allows Infusionsoft users to quickly embed great looking webforms into their WordPress posts, pages, and sidebars!
 
@@ -19,7 +19,6 @@ This plugin allows Infusionsoft users to quickly embed great looking webforms in
 5. Add Infusionsoft Webforms Using the Shortcode button on any WYSIWYG Editor!
 
 == Screenshots ==
-
 1. Fusion Forms Settings Screen
 2. Fusion Forms Shortcode Generator on a WordPress page
 3. An Infusionsoft webform embedded on a page using a Fusion Forms Shortcode (2015 Theme)
