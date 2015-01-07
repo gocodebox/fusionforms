@@ -17,3 +17,12 @@ This plugin allows Infusionsoft users to quickly embed great looking webforms in
 3. Navigate to the Fusion Forms settings page
 4. Add your Infusionsoft Application Credentials
 5. Add Infusionsoft Webforms Using the Shortcode button on any WYSIWYG Editor!
+
+== Screenshots ==
+
+1. Fusion Forms Settings Screen
+2. Fusion Forms Shortcode Generator on a WordPress page
+3. An Infusionsoft webform embedded on a page using a Fusion Forms Shortcode (2015 Theme)
+4. The same webform embedded on a page using Infusionsoft's standard form embed code (2015 Theme)
+
+== Changelog ==

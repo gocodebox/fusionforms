@@ -26,6 +26,14 @@
   padding-bottom: 10px;
   max-width: 100%;
 }
+.ff-webform .infusion-radio span {
+  display: block;
+}
+.ff-webform table, .ff-webform th, .ff-webform td {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
 
 .ff-clear {
   clear: both;

@@ -5,7 +5,6 @@
 	&.align--left { float: left; }
 	&.align--right { float: right; }
 
-
 	&.label--above {
 		table td {
 			display: block;
@@ -32,6 +31,18 @@
 	.infusion-field-input-container {
 		padding-bottom: 10px;
 		max-width: 100%;
+	}
+
+	.infusion-radio {
+		span {
+			display: block;
+		}
+	}
+
+	table, th, td {
+		border: none;
+		padding: 0;
+		margin: 0;
 	}
 }
 
