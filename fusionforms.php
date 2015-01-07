@@ -1,16 +1,16 @@
 <?php
 /**
-* Plugin Name: InfusionPress by codeBOX
+* Plugin Name: Fusion Forms by codeBOX
 * Plugin URI: http://gocodebox.com
-* Description: Enables the Infusionsoft PHP SDK for use in various other Infusionsoft Related Plugins
+* Description: This plugin allows Infusionsoft users to quickly embed great looking webforms into their WordPress posts, pages, and sidebars!
 * Version: 0.1.0
 * Author: codeBOX
 * Author URI: http://gocodebox.com
 *
-* Requires at least: 3.8
+* Requires at least: 4.0
 * Tested up to: 4.1
 *
-* @package 		InfusionPress
+* @package 		FusionForms
 * @category 	Core
 * @author 		codeBOX
 */
@@ -20,14 +20,14 @@
  */
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-if ( ! class_exists( 'InfusionPress') ) :
+if ( ! class_exists( 'FusionForms') ) :
 
 /**
- * Main InfusionPress
+ * Main FusionForms
  *
- * @class InfusionPress
+ * @class FusionForms
  */
-final class InfusionPress {
+final class FusionForms {
 
 	protected static $_instance;
 
@@ -39,14 +39,13 @@ final class InfusionPress {
 	 */
 	public $app;
 
-
 	/**
-	 * Main Instance of InfusionPress
+	 * Main Instance of FusionForms
 	 *
-	 * Ensures only one instance of InfusionPress is loaded or can be loaded.
+	 * Ensures only one instance of FusionForms is loaded or can be loaded.
 	 *
 	 * @static
-	 * @return InfusionPress - Main Instance
+	 * @return FusionForms - Main Instance
 	 */
 	public static function instance() {
 		if ( is_null( self::$_instance ) ) {
@@ -70,16 +69,17 @@ final class InfusionPress {
 
 		$this->define_constants();
 
-		// $this->includes();
-
 		add_action( 'init', array( $this, 'init' ), 0 );
 		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'add_action_links' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_all' ) );
+
+		add_action( 'wp_head', array($this, 'custom_css') );
 
 		do_action( 'infusionpress_loaded' );
 	}
 
 	/**
-	 * Autoloader for InfusionPress classes
+	 * Autoloader for FusionForms classes
 	 *
 	 * @param  mixed $class
 	 * @return void
@@ -89,11 +89,11 @@ final class InfusionPress {
 
 		$file = str_replace( '_', '.', $class ) . '.php';
 
-		if ( strpos ( $class, 'IP_iSDK' ) === 0 ) {
+		if ( strpos ( $class, 'FF_iSDK' ) === 0 ) {
 			$path = $this->plugin_path() . '/includes/vendor/iSDK/';
 			$file = 'isdk.php';
 		}
-		elseif ( strpos( $class, 'IP_' ) === 0 ) {
+		elseif ( strpos( $class, 'FF_' ) === 0 ) {
 			$path = $this->plugin_path() . '/includes/classes/';
 		}
 
@@ -103,23 +103,55 @@ final class InfusionPress {
 		}
 	}
 
+
 	/**
 	 * Define LifterLMS Constants
 	 * @return null
 	 */
 	private function define_constants() {
 
-		if ( ! defined( 'IP_PLUGIN_FILE' ) ) {
-			define( 'IP_PLUGIN_FILE', __FILE__ );
+		if ( ! defined( 'FF_PLUGIN_FILE' ) ) {
+			define( 'FF_PLUGIN_FILE', __FILE__ );
 		}
 
-		if ( ! defined( 'IP_VERSION' ) ) {
-			define( 'IP_VERSION', $this->version );
+		if ( ! defined( 'FF_VERSION' ) ) {
+			define( 'FF_VERSION', $this->version );
 		}
 
-		if ( ! defined( 'IP_PLUGIN_DIR' ) ) {
-			define( 'IP_PLUGIN_DIR', WP_PLUGIN_DIR . "/" . plugin_basename( dirname(__FILE__) ) . '/');
+		if ( ! defined( 'FF_PLUGIN_DIR' ) ) {
+			define( 'FF_PLUGIN_DIR', WP_PLUGIN_DIR . "/" . plugin_basename( dirname(__FILE__) ) . '/');
 		}
+	}
+
+
+	/**
+	 * "Enqueue" custom CSS if it exists
+	 * @return null
+	 */
+	public function custom_css() {
+		$options = get_option( 'fusionforms' );
+
+		if( $options['custom_css'] ) {
+			echo '<style id="fusionforms-custom-css" type="text/css" media="all">'.$options['custom_css'].'</style>';
+		}
+
+	}
+
+
+	/**
+	 * Enqueue frontend scripts & styles
+	 * @return null
+	 */
+	public function enqueue_all() {
+
+		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+			$stylesheet = 'fusionforms-style.css';
+		} else {
+			$stylesheet = 'fusionforms-style.min.css';
+		}
+
+		wp_register_style( 'fusionforms-style', $this->plugin_url() . '/assets/public/css/' . $stylesheet , array(), $this->version, 'all' );
+		wp_enqueue_style( 'fusionforms-style' );
 	}
 
 
@@ -129,7 +161,7 @@ final class InfusionPress {
 	 */
 	public function init() {
 
-		$iSDK = new IP_InfusionsoftSDK();
+		$iSDK = new FF_InfusionsoftSDK();
 		$this->app = $iSDK->connect();
 
 		if( !$this->app ) {
@@ -137,10 +169,18 @@ final class InfusionPress {
 			if( is_admin() )
 				add_action( 'admin_notices', array( $iSDK, 'admin_notice' ) );
 
+		} else {
+
+			new FF_TinyMCE();
+			new FF_Shortcodes();
+
 		}
 
-		if( is_admin() )
-			new IP_OptionsPage();
+		$this->status = $iSDK->get_status();
+
+		if( is_admin() ) {
+			new FF_OptionsPage();
+		}
 	}
 
 
@@ -175,7 +215,7 @@ final class InfusionPress {
 		// kill function if there's 3 links (means the plugin is inactive)
 		if (count($links) == 3) return $links;
 
-		$links[] = '<a href="' . admin_url( 'admin.php?page=infusionpress-settings' ) . '">' . __( 'Settings', 'infusionpress' ) . '</a>';
+		$links[] = '<a href="' . admin_url( 'options-general.php?page=fusionforms-settings' ) . '">' . __( 'Settings', 'infusionpress' ) . '</a>';
 
 		return $links;
 	}
@@ -185,13 +225,12 @@ final class InfusionPress {
 endif;
 
 /**
- * Returns the main instance of InfusionPress
+ * Returns the main instance of FusionForms
  *
  * @return LifterLMS
  */
-function InfusionPress() {
-	return InfusionPress::instance();
+function FusionForms() {
+	return FusionForms::instance();
 }
 
-global $InfusionPress;
-$InfusionPress = InfusionPress();
+FusionForms();

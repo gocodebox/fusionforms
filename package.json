@@ -1,0 +1,37 @@
+{
+  "name": "Fusion Forms",
+  "description": "Fusion Forms by codeBO",
+  "version": "0.1.0",
+  "homepage": "http://gocodebox.com",
+  "contributors": [
+    {
+      "name": "Thomas Patrick Levy",
+      "email": "thomas@gocodebox.com",
+      "url": "http://gocodebox.com"
+    }
+  ],
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gocodebox/fusionforms"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.8.9",
+    "gulp-autoprefixer": "0.0.8",
+    "gulp-cache": "^0.2.0",
+    "gulp-clean": "^0.3.1",
+    "gulp-include": "^1.0.0",
+    "gulp-jshint": "^1.8.4",
+    "gulp-minify-css": "^0.3.7",
+    "gulp-notify": "^1.4.1",
+    "gulp-rename": "^1.2.0",
+    "gulp-ruby-sass": "^0.7.1",
+    "gulp-sourcemaps": "^1.1.1",
+    "gulp-svg-sprites": "^1.0.3",
+    "gulp-svgmin": "^0.4.8",
+    "gulp-uglify": "^0.3.1",
+    "gulp-watch": "^0.6.9",
+    "jshint-stylish": "^0.4.0"
+  }
+}

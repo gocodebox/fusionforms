@@ -12,11 +12,11 @@ if (!function_exists('xmlrpc_encode_entitites')) {
     include("xmlrpc-3.0/lib/xmlrpc.inc");
 }
 
-class IP_iSDKException extends Exception
+class FF_iSDKException extends Exception
 {
 }
 
-class IP_iSDK
+class FF_iSDK
 {
 
     static private $handle;
@@ -31,7 +31,7 @@ class IP_iSDK
      * @param string $dbOn - Error Handling On
      * @param string $type - Infusionsoft or Mortgage Pro
      * @return bool
-     * @throws IP_iSDKException
+     * @throws FF_iSDKException
      */
     public function cfgCon($name, $key = "", $dbOn = "on")
     {
@@ -71,11 +71,11 @@ class IP_iSDK
             $connected = $this->dsGetSetting("Application", "enabled");
 
             if (strpos($connected, 'ERROR') !== FALSE) {
-                throw new IP_iSDKException($connected);
+                throw new FF_iSDKException($connected);
             }
 
-        } catch (IP_iSDKException $e) {
-            throw new IP_iSDKException($e->getMessage());
+        } catch (FF_iSDKException $e) {
+            throw new FF_iSDKException($e->getMessage());
         }
 
         return true;
@@ -90,7 +90,7 @@ class IP_iSDK
      * @param string $key - Vendor Key
      * @param string $dbOn - Error Handling On
      * @return bool
-     * @throws IP_iSDKException
+     * @throws FF_iSDKException
      */
     public function vendorCon($name, $user, $pass, $key = "", $dbOn = "on")
     {
@@ -113,10 +113,10 @@ class IP_iSDK
                     $this->client = new xmlrpc_client("https://" . $details[$name][1] .
                         ".mortgageprocrm.com/api/xmlrpc");
                 } else {
-                    throw new IP_iSDKException("Invalid application name: \"" . $name . "\"");
+                    throw new FF_iSDKException("Invalid application name: \"" . $name . "\"");
                 }
             } else {
-                throw new IP_iSDKException("Application Does Not Exist: \"" . $name . "\"");
+                throw new FF_iSDKException("Application Does Not Exist: \"" . $name . "\"");
             }
             $this->key = $details[$name][3];
         }
@@ -139,8 +139,8 @@ class IP_iSDK
 
         try {
             $connected = $this->dsGetSetting("Application", "enabled");
-        } catch (IP_iSDKException $e) {
-            throw new IP_iSDKException("Connection Failed");
+        } catch (FF_iSDKException $e) {
+            throw new FF_iSDKException("Connection Failed");
         }
         return TRUE;
     }
@@ -165,7 +165,7 @@ class IP_iSDK
      * @param string $service
      * @param array $callArray
      * @return int|mixed|string
-     * @throws IP_iSDKException
+     * @throws FF_iSDKException
      */
     public function methodCaller($service, $callArray)
     {
@@ -199,7 +199,7 @@ class IP_iSDK
                 return "ERROR: " . $result->faultCode() . " - " .
                 $result->faultString();
             } elseif ($this->debug == "throw") {
-                throw new IP_iSDKException($result->faultString(), $result->faultCode());
+                throw new FF_iSDKException($result->faultString(), $result->faultCode());
             } elseif ($this->debug == "off") {
                 //ignore!
             }

@@ -1,0 +1,41 @@
+// .fusionforms {}
+
+.ff-webform {
+	&.align--center { margin: 0 auto; }
+	&.align--left { float: left; }
+	&.align--right { float: right; }
+
+
+	&.label--above {
+		table td {
+			display: block;
+		}
+
+		.infusion-field-input-container {
+			min-width: 100%;
+		}
+	}
+
+	&.label--left {
+		.infusion-field-label-container {
+			width: 40%;
+		}
+	}
+
+	select,
+	textarea,
+	input[type="text"] {
+		width: 100%;
+	}
+
+	.text,
+	.infusion-field-input-container {
+		padding-bottom: 10px;
+		max-width: 100%;
+	}
+}
+
+.ff-clear {
+	clear: both;
+	display: block;
+}
