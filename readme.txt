@@ -1,6 +1,6 @@
-=== Fusion Forms by codeBOX ===
+=== FusionForms by codeBOX ===
 Contributors: thomasplevy
-Tags: Infusionsoft
+Tags: Infusionsoft, Infusionsoft Webforms
 Requires at least: 4.0
 Tested up to: 4.1
 License: License: GPLv2 or later

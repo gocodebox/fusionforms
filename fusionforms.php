@@ -1,7 +1,7 @@
 <?php
 /**
-* Plugin Name: Fusion Forms by codeBOX
-* Plugin URI: http://gocodebox.com
+* Plugin Name: FusionForms by codeBOX
+* Plugin URI: http://fusionforms.co
 * Description: This plugin allows Infusionsoft users to quickly embed great looking webforms into their WordPress posts, pages, and sidebars!
 * Version: 0.1.0
 * Author: codeBOX
@@ -75,7 +75,7 @@ final class FusionForms {
 
 		add_action( 'wp_head', array($this, 'custom_css') );
 
-		do_action( 'infusionpress_loaded' );
+		do_action( 'fusionforms_loaded' );
 	}
 
 	/**
@@ -105,7 +105,7 @@ final class FusionForms {
 
 
 	/**
-	 * Define LifterLMS Constants
+	 * Define FusionForms Constants
 	 * @return null
 	 */
 	private function define_constants() {
@@ -156,7 +156,23 @@ final class FusionForms {
 
 
 	/**
-	 * Init LifterLMS when WordPress Initialises.
+	 * Exposes all methods in the Infusionsoft Helper Class
+	 * @return mixed
+	 */
+	public function sdk_get() {
+		$args = func_get_args();
+		$method = $args[0];
+		unset($args[0]);
+		array_unshift($args, $this->app);
+		if(method_exists('FF_InfusionsoftHelpers', $method)) {
+			return call_user_func_array( 'FF_InfusionsoftHelpers::'.$method, $args );
+		}
+		return 'Invalid Method!';
+	}
+
+
+	/**
+	 * Init FusionForms when WordPress Initialises.
 	 * @return null
 	 */
 	public function init() {
@@ -221,16 +237,14 @@ final class FusionForms {
 	}
 
 }
-
 endif;
 
 /**
  * Returns the main instance of FusionForms
  *
- * @return LifterLMS
+ * @return FusionForms
  */
 function FusionForms() {
 	return FusionForms::instance();
 }
-
 FusionForms();

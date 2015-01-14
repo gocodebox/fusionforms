@@ -37,8 +37,8 @@ class FF_OptionsPage {
 	 */
 	public function add_options_page() {
 		add_options_page(
-			'Fusion Forms - Infusionsoft Settings',
-			'Fusion Forms',
+			'FusionForms - Infusionsoft Settings',
+			'FusionForms',
 			'manage_options',
 			'fusionforms-settings',
 			array( $this, 'admin_page_callback' )
@@ -51,7 +51,6 @@ class FF_OptionsPage {
 	 * @return null
 	 */
 	public function admin_page_callback() {
-
 		$this->options = get_option( $this->option_name );
 		?>
 		<div class="wrap">
@@ -179,7 +178,5 @@ class FF_OptionsPage {
 				'<i>%s</i>',
 				__( 'FusionForms is connected to your Infusionsoft application', 'pushpress' )
 			);
-
 	}
-
 }

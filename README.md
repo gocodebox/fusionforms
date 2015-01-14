@@ -1,2 +1,2 @@
-Fusion Forms: Infusionsoft PHP SDK for WordPress
+FusionForms: Infusionsoft PHP SDK for WordPress
 =================================================

@@ -35,7 +35,7 @@ class FF_InfusionsoftSDK {
 			case 'disconnected':
 				$msg = sprintf(
 					'%s <a href="%s">%s</a> %s',
-					__( 'Your Fusion Forms setup is almost complete,', 'fusionforms' ),
+					__( 'Your FusionForms setup is almost complete,', 'fusionforms' ),
 					admin_url( 'options-general.php?page=fusionforms-settings' ),
 					__( 'click here', 'fusionforms' ),
 					__( 'to add your Infusionsoft credentials.', 'fusionforms' )
@@ -44,7 +44,7 @@ class FF_InfusionsoftSDK {
 			break;
 
 			case 'error':
-				$msg = __( 'Fusion Forms encountered an error connecting to Infusionsoft using the credentials you provided.', 'fusionforms' );
+				$msg = __( 'FusionForms encountered an error connecting to Infusionsoft using the credentials you provided.', 'fusionforms' );
 				$type = 'error';
 			break;
 		}
@@ -92,7 +92,4 @@ class FF_InfusionsoftSDK {
 	public function get_status() {
 		return $this->status;
 	}
-
-
-
 }
