@@ -8,7 +8,7 @@
  * @ApplicationVersion 1.29.9
  */
 
-if (!function_exists('xmlrpc_encode_entitites')) {
+if (!function_exists('xmlrpc_encode_entitites') && !class_exists('xmlrpc_client')) {
     include("xmlrpc-3.0/lib/xmlrpc.inc");
 }
 
