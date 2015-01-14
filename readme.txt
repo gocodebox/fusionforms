@@ -9,7 +9,6 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 This plugin allows Infusionsoft users to quickly embed great looking webforms into their WordPress posts, pages, and sidebars!
 
 == Description ==
-
 *FusionForms will allow you to...*
 + Seemlessly match the forms style guidelines in your WordPress Website
 + FusionForms is simple to install.  Just add a shortcode to any page, post, or widget!
@@ -30,3 +29,8 @@ This plugin allows Infusionsoft users to quickly embed great looking webforms in
 4. The same webform embedded on a page using Infusionsoft's standard form embed code (2015 Theme)
 
 == Changelog ==
+### 0.1.1 - 2015-01-14
++ Addressed an issue which caused the plugin to fail when other instances of the Infusionsoft SDK were running in the theme or other plugins
+
+### 0.1.0 - 2015-01-07
++ First beta release
