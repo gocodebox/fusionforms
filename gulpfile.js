@@ -4,6 +4,7 @@ var gulp = require('gulp'),
 	fs = require('fs'),
 	include = require('gulp-include'),
 	jshint = require('gulp-jshint'),
+	merge = require('merge-stream'),
 	minifycss = require('gulp-minify-css'),
 	notify = require('gulp-notify'),
 	rename = require('gulp-rename'),
@@ -19,21 +20,6 @@ var gulp = require('gulp'),
 
 	// default bump update
 	bump_type = 'patch';
-
-
-
-
-
-// start a browser-sync server
-gulp.task('browser-sync', function() {
-	browserSync({
-		// debugInfo: false,
-		// online: true,
-		// open: 'tunnel',
-		proxy: 'local.wordpress.dev',
-		// tunnel: 'http://local.wordpress.dev/'
-	});
-});
 
 // JAVACRIPT LINTER
 gulp.task('lint-js', function () {
@@ -136,6 +122,34 @@ gulp.task('sass',function() {
 //         }]))
 // 		.pipe(gulp.dest('assets/public/'));
 // });
+
+
+/**
+ * Copy all necessary files into the __svn repo trunk
+ */
+gulp.task('svn',function(){
+	var dest_dir = '__svn/trunk';
+
+	var readme = gulp.src('./README.md')
+		.pipe(rename('readme.txt'))
+	    .pipe(gulp.dest(dest_dir));
+
+	var trunk = gulp.src([
+			'./**/*',
+			'!./gulpfile.js',
+			'!./package.json',
+			'!./README.md',
+			'!./_private/',
+			'!./_private/**',
+			'!./node_modules/',
+			'!./node_modules/**',
+			'!./__svn/',
+			'!./__svn/**'
+		])
+		.pipe(gulp.dest(dest_dir));
+
+	return merge(readme,trunk);
+});
 
 
 // build all

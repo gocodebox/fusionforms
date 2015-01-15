@@ -1,7 +1,7 @@
 {
-  "name": "Fusion Forms",
-  "description": "Fusion Forms by codeBO",
-  "version": "0.1.0",
+  "name": "FusionForms",
+  "description": "FusionForms by codeBO",
+  "version": "0.1.1",
   "homepage": "http://gocodebox.com",
   "contributors": [
     {
@@ -17,7 +17,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "gulp": "^3.8.9",
+    "gulp": "^3.8.10",
     "gulp-autoprefixer": "0.0.8",
     "gulp-cache": "^0.2.0",
     "gulp-clean": "^0.3.1",
@@ -32,6 +32,7 @@
     "gulp-svgmin": "^0.4.8",
     "gulp-uglify": "^0.3.1",
     "gulp-watch": "^0.6.9",
-    "jshint-stylish": "^0.4.0"
+    "jshint-stylish": "^0.4.0",
+    "merge-stream": "^0.1.7"
   }
 }
