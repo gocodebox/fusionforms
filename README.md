@@ -1,5 +1,4 @@
 === FusionForms by codeBOX ===
-
 Contributors: thomasplevy
 Tags: Infusionsoft, Infusionsoft Webforms
 Requires at least: 4.0
@@ -7,17 +6,26 @@ Tested up to: 4.1
 License: License: GPLv2 or late
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-This plugin allows Infusionsoft users to quickly embed great looking webforms into their WordPress posts, pages, and sidebars!
+The FusionForms plugin is for Infusionsoft users who are tired of the headache that occurs when trying to embed Infusionsoft webforms on their WordPress website.
 
 
 == Description ==
 
-**FusionForms will allow you to...**
+The FusionForms plugin is for Infusionsoft users who are tired of the headache that occurs when trying to embed Infusionsoft webforms on their WordPress website.
 
-+ Seemlessly match the forms style guidelines in your WordPress Website
-+ FusionForms is simple to install.  Just add a shortcode to any page, post, or widget!
-+ Pick how your form lines up on the page (left, center, etc.)
-+ Easily choose a form width that makes sense for each page
+For a in-depth overview of the plugin check out [http://fusionforms.co](http://fusionforms.co)
+
+With FusionForms embedding Infusionsoft Webforms is simple. All you have to do is connect your Infusionsoft API to the plugin in the setting. Once your Infusionsoft app is connected, FusionForms will pull form data into its easy-to-use shortcode generator.
+
+Using the shortcode generator you simple select the form in your application, the width that you’d like to have for the form, the alignment and where the label should site.
+
+Hit the button.
+
+BOOM - perfectly styled Infusionsoft Webforms.
+
+Now not all WordPress themes are created equal and if your form isn’t looking perfect you can always adjust the CSS in the setting to make it beautiful.
+
+If you need help with this please [contact us](http://gocodebox.com/fusionforms) and we’d be happy to help you stylize your forms.
 
 
 == Installation ==
@@ -38,8 +46,12 @@ This plugin allows Infusionsoft users to quickly embed great looking webforms in
 
 == Changelog ==
 
-### 0.1.1 - 2015-01-14
+#### 0.1.1
+*Released 2015-01-14*
+
 + Addressed an issue which caused the plugin to fail when other instances of the Infusionsoft SDK were running in the theme or other plugins
 
-### 0.1.0 - 2015-01-07
+#### 0.1.0
+*Released 2015-01-07*
+
 + First beta release
