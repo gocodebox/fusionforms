@@ -36,12 +36,14 @@ class FF_OptionsPage {
 	 * @return  null
 	 */
 	public function add_options_page() {
-		add_options_page(
+		add_menu_page(
 			'FusionForms - Infusionsoft Settings',
 			'FusionForms',
 			'manage_options',
 			'fusionforms-settings',
-			array( $this, 'admin_page_callback' )
+			array( $this, 'admin_page_callback' ),
+			'dashicons-hammer',
+			777
 		);
 	}
 
