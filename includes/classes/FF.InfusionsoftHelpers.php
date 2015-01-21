@@ -36,7 +36,8 @@ class FF_InfusionsoftHelpers {
 
 		$r = array();
 		foreach($tags as $tag) {
-			$r[ $tag['Id'] ] = ($with_categories) ? $categories[ $tag['GroupCategoryId'] ] . ' -> ' . $tag['GroupName'] : $tag['GroupName'];
+			$category_name = ( $categories[ $tag['GroupCategoryId'] ] ) ? $categories[ $tag['GroupCategoryId'] ] : 'Uncategorized';
+			$r[ $tag['Id'] ] = ( $with_categories ) ? $category_name . ' -> ' . $tag['GroupName'] : $tag['GroupName'];
 		}
 
 		// alpha sort results
