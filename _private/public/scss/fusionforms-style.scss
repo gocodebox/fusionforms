@@ -16,15 +16,6 @@
 
 	// &.label--above {}
 
-	&.label--placeholder {
-		label {
-			position: absolute;
-			top: 5px;
-			bottom: 5px;
-			left: 5px;
-		}
-	}
-
 	&.label--left {
 		label,
 		select,
@@ -35,6 +26,7 @@
 		}
 
 		label {
+			vertical-align: top;
 			width: 40%;
 		}
 	}

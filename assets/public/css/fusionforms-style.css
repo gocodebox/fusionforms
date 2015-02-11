@@ -16,12 +16,6 @@
   margin-bottom: 10px;
   width: 100%;
 }
-.ff-webform.label--placeholder label {
-  position: absolute;
-  top: 5px;
-  bottom: 5px;
-  left: 5px;
-}
 .ff-webform.label--left label,
 .ff-webform.label--left select,
 .ff-webform.label--left textarea,
@@ -30,6 +24,7 @@
   width: 60%;
 }
 .ff-webform.label--left label {
+  vertical-align: top;
   width: 40%;
 }
 .ff-webform .infusion-radio span {
