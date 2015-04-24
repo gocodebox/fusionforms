@@ -78,6 +78,8 @@ class FF_InfusionsoftHelpers {
 			$r[ $cat['Id'] ] = $cat['CategoryName'];
 		}
 
+		$r[0] = 'Uncategorized';
+
 		// alpha sort results
 		asort($r);
 
