@@ -41,18 +41,22 @@ class FF_Shortcodes {
 		$form_length = ($form_end+7)-$form_start;
 		$form = substr($html,$form_start,$form_length);
 
-		// remove some nonsense
+		// remove some undesired attributes
 		$patterns = array(
 			'/(<[^>]+) onsubmit=".*?"/is',
 			'/(<[^>]+) style=".*?"/i',
 			'/(<[^>]+) bgcolor=".*?"/i',
-			'/(<[^>]+) cellpadding=".*?"/i',
-			'/(<[^>]+) cellspacing=".*?"/i',
 			'/(<[^>]+) width=".*?"/i',
 			'/(<[^>]+) sectionid=".*?"/i',
-			'/(<[^>]+) valign=".*?"/i'
+			'/(<[^>]+) valign=".*?"/i',
 		);
 		$form = preg_replace($patterns, '$1', $form);
+
+		// remove tables
+		$form = preg_replace('/\<[\/]?(table|thead|tfoot|tbody|tr|td)([^\>]*)\>/i', '', $form);
+
+		// trim, cleanup new lines, remove whitespace characters
+		$form = trim(str_replace(array('&nbsp;', "\r", "\n"), '', $form));
 
 		$r = '<div class="fusionforms ff-webform align--'.$align.' label--'.$label.'" style="width:'.$width.';">'.$form.'</div><br class="ff-clear">';
 

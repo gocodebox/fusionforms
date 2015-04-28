@@ -7,32 +7,28 @@
 .ff-webform.align--right {
   float: right;
 }
-.ff-webform.label--above table td {
-  display: block;
-}
-.ff-webform.label--above .infusion-field-input-container {
-  min-width: 100%;
-}
-.ff-webform.label--left .infusion-field-label-container {
-  width: 40%;
+.ff-webform div {
+  position: relative;
 }
 .ff-webform select,
 .ff-webform textarea,
 .ff-webform input[type="text"] {
+  margin-bottom: 10px;
   width: 100%;
 }
-.ff-webform .text,
-.ff-webform .infusion-field-input-container {
-  padding-bottom: 10px;
-  max-width: 100%;
+.ff-webform.label--left label,
+.ff-webform.label--left select,
+.ff-webform.label--left textarea,
+.ff-webform.label--left input {
+  display: inline-block;
+  width: 60%;
+}
+.ff-webform.label--left label {
+  vertical-align: top;
+  width: 40%;
 }
 .ff-webform .infusion-radio span {
   display: block;
-}
-.ff-webform table, .ff-webform th, .ff-webform td {
-  border: none;
-  padding: 0;
-  margin: 0;
 }
 
 .ff-clear {

@@ -5,44 +5,36 @@
 	&.align--left { float: left; }
 	&.align--right { float: right; }
 
-	&.label--above {
-		table td {
-			display: block;
-		}
-
-		.infusion-field-input-container {
-			min-width: 100%;
-		}
-	}
-
-	&.label--left {
-		.infusion-field-label-container {
-			width: 40%;
-		}
-	}
+	div { position: relative; }
 
 	select,
 	textarea,
 	input[type="text"] {
+		margin-bottom: 10px;
 		width: 100%;
 	}
 
-	.text,
-	.infusion-field-input-container {
-		padding-bottom: 10px;
-		max-width: 100%;
+	// &.label--above {}
+
+	&.label--left {
+		label,
+		select,
+		textarea,
+		input {
+			display: inline-block;
+			width: 60%;
+		}
+
+		label {
+			vertical-align: top;
+			width: 40%;
+		}
 	}
 
 	.infusion-radio {
 		span {
 			display: block;
 		}
-	}
-
-	table, th, td {
-		border: none;
-		padding: 0;
-		margin: 0;
 	}
 }
 

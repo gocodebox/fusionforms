@@ -46,6 +46,16 @@ If you need help with this please [contact us](http://gocodebox.com/fusionforms)
 
 == Changelog ==
 
+#### 1.0.0
+*Unreleased*
+
+###### Tableless Infusionsoft Webforms!
++ Updated form regex to remove tables and all related HTML
++ Removed all references to tables from CSS
++ Removed white space and line breaks from generated HTML
++ Now top aligning labels on left-aligned field labels
+
+
 #### 0.1.1
 *Unreleased*
 

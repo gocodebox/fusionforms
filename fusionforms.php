@@ -3,7 +3,7 @@
 * Plugin Name: FusionForms by codeBOX
 * Plugin URI: http://fusionforms.co
 * Description: The FusionForms plugin is for Infusionsoft users who are tired of the headache that occurs when trying to embed Infusionsoft webforms on their WordPress website.
-* Version: 0.1.1
+* Version: 1.0.0
 * Author: codeBOX
 * Author URI: http://gocodebox.com
 *
@@ -31,7 +31,7 @@ final class FusionForms {
 
 	protected static $_instance;
 
-	public $version = '0.1.1';
+	public $version = '1.0.0';
 
 	/**
 	 * Publicly Accessible Infusionsoft SDK Instances
