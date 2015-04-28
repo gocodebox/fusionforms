@@ -43,7 +43,7 @@ class FF_OptionsPage {
 			'fusionforms-settings',
 			array( $this, 'admin_page_callback' ),
 			'dashicons-hammer',
-			777
+			777777
 		);
 	}
 

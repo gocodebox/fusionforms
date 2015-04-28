@@ -47,6 +47,11 @@ If you need help with this please [contact us](http://gocodebox.com/fusionforms)
 == Changelog ==
 
 #### 0.1.1
+*Unreleased*
+
++ Moved the FusionForms option page to its own menu item
+
+#### 0.1.1
 *Released 2015-01-14*
 
 + Addressed an issue which caused the plugin to fail when other instances of the Infusionsoft SDK were running in the theme or other plugins
