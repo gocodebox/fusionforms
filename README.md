@@ -47,19 +47,17 @@ If you need help with this please [contact us](http://gocodebox.com/fusionforms)
 == Changelog ==
 
 #### 1.0.0
-*Unreleased*
+*Release 2015-04.27*
 
-###### Tableless Infusionsoft Webforms!
++ Moved the FusionForms option page to its own menu item
++ Updated priority of FusionForms menu item to ensure the Menu Item properly displays on the Admin Panel.
+
+###### Table-less Infusionsoft Webforms!
 + Updated form regex to remove tables and all related HTML
 + Removed all references to tables from CSS
 + Removed white space and line breaks from generated HTML
 + Now top aligning labels on left-aligned field labels
 
-
-#### 0.1.1
-*Unreleased*
-
-+ Moved the FusionForms option page to its own menu item
 
 #### 0.1.1
 *Released 2015-01-14*
